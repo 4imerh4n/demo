@@ -3,8 +3,13 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 df = pd.read_csv('Dubai.csv')
+sns.set(style="whitegrid")
 sns.set_theme(font = 'serif')
-plt.figure(figsize=(8,7))
-sns.heatmap(corr_matrix,annot=True,cmap='PuBuGn',linewidths=.5)
-plt.title('Correlation Heatmap', fontdict={'fontweight': 'bold'}, fontsize=15, color='green',pad=10)
+
+pairplot = sns.pairplot(df, vars=['Rent', 'Beds', 'Baths', 'Area_in_m2', 'Rent_per_m2'],
+                        hue='Rent_category',diag_kind="kde", markers="o",
+                        height=3, aspect=1, kind="scatter",
+                        palette="Set2")
+
+plt.show()
 plt.show()
