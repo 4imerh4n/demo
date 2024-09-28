@@ -1,15 +1,17 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
-df = pd.read_csv('Dubai.csv')
-sns.set(style="whitegrid")
-sns.set_theme(font = 'serif')
 
-pairplot = sns.pairplot(df, vars=['Rent', 'Beds', 'Baths', 'Area_in_m2', 'Rent_per_m2'],
-                        hue='Rent_category',diag_kind="kde", markers="o",
-                        height=3, aspect=1, kind="scatter",
-                        palette="Set2")
+# Create a sample dataset
+data = {'Category': ['A', 'B', 'C', 'D', 'E'], 
+        'Value': [10, 20, 30, 40, 50]}
+df = pd.DataFrame(data)
 
-plt.show()
-plt.show()
+# Create a bar chart
+fig, ax = plt.subplots()
+ax.bar(df['Category'], df['Value'])
+
+# Create a Streamlit app
+st.title("Bar Chart Example")
+st.write("This is a simple bar chart example on Streamlit.")
+st.pyplot(fig)
